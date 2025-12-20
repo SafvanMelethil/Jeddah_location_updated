@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>UPC Material Scanner</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <div class="logo">UPC</div>
+      <div class="titles">
+        <div class="title">Material Lookup</div>
+        <div class="subtitle">Scanner-device input (Barcode / QR)</div>
+      </div>
+    </div>
+    <div class="meta" id="meta"></div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="row">
+        <label class="label" for="scanInput">Scan code</label>
+        <div class="hint">Always active. Use your handheld scanner. (No camera)</div>
+      </div>
+      <input id="scanInput" class="input" autocomplete="off" inputmode="text" placeholder="Scan barcode / QR / GS1…"/>
+      <div class="small" id="lastParsed"></div>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <label class="label" for="searchInput">Search material</label>
+        <div class="hint">If scan not found, type to search description / material ID.</div>
+      </div>
+      <input id="searchInput" class="input" autocomplete="off" placeholder="Type name or material ID…"/>
+      <div id="dropdown" class="dropdown hidden"></div>
+    </section>
+
+    <section class="card result">
+      <div class="row">
+        <div class="label">Result</div>
+        <div class="status" id="status">Ready</div>
+      </div>
+
+      <div id="resultEmpty" class="empty">
+        Scan something or search a material to view details.
+      </div>
+
+      <div id="resultCard" class="resultCard hidden">
+        <div class="rTitle" id="rDesc"></div>
+        <div class="grid">
+          <div class="kv"><div class="k">Material ID</div><div class="v" id="rId"></div></div>
+          <div class="kv"><div class="k">Barcode</div><div class="v" id="rBarcode"></div></div>
+          <div class="kv"><div class="k">Department</div><div class="v" id="rDept"></div></div>
+          <div class="kv"><div class="k">Zone</div><div class="v" id="rZone"></div></div>
+          <div class="kv"><div class="k">Bin</div><div class="v" id="rBin"></div></div>
+        </div>
+      </div>
+
+      <div class="small muted">
+        Note: JSON is internal. Nothing is downloaded or shown as JSON.
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Created by: Eng Safvan Melethil • United Pharmacy
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
